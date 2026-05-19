@@ -1,7 +1,3 @@
-provider "aws" {
-  region = var.region
-}
-
 resource "aws_s3_bucket" "bucket" {
   bucket_prefix = var.bucket_prefix
   region        = var.region
