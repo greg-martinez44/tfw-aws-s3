@@ -5,5 +5,5 @@ output "bucket_arn" {
 
 output "bucket_name" {
   description = "The new bucket's name."
-  value       = aws_s3_bucket.bucket.name
+  value       = aws_s3_bucket.bucket.id
 }
