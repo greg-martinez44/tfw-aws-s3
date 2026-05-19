@@ -58,10 +58,11 @@ variable "policy_actions" {
   description = "A list of actions to allow in the bucket policy."
   type        = list(string)
   default = [
-    "s3:ListBucket",
-    "s3:ListObjects",
     "s3:GetObject",
-    "s3:PuObject",
-    "s3:DeleteObject"
+    "s3:GetObjectVersion",
+    "s3:PutObject",
+    "s3:DeleteObject",
+    "s3:ListBucket",
+    "s3:GetBucketLocation"
   ]
 }
