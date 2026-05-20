@@ -30,7 +30,6 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "encryption_config
 }
 
 resource "aws_s3_bucket_public_access_block" "public_access_block" {
-  count                   = var.bucket_acl == null ? 1 : 0
   bucket                  = aws_s3_bucket.bucket.id
   block_public_acls       = true
   block_public_policy     = true
@@ -54,7 +53,7 @@ data "aws_iam_policy_document" "policy_document" {
   statement {
     principals {
       type        = coalesce(var.principal_type, "AWS")
-      identifiers = coalesce(var.principal_identifiers, [data.aws_caller_identity.current[0].account_id])
+      identifiers = coalesce(var.principal_identifiers, ["arn:aws:iam::${data.aws_caller_identity.current[0].account_id}:root"])
     }
     actions = var.policy_actions
     resources = [
